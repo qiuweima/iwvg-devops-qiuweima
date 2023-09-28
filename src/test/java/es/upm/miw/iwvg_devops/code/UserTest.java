@@ -47,8 +47,10 @@ public class UserTest {
     void testGetFractions() {
         List<Fraction> fractions = user.getFractions();
         assertEquals(2, fractions.size());
-        assertEquals(new Fraction(1, 2), fractions.get(0));
-        assertEquals(new Fraction(3, 4), fractions.get(1));
+        assertEquals(1, fractions.get(0).getNumerator());
+        assertEquals(2, fractions.get(0).getDenominator());
+        assertEquals(3, fractions.get(1).getNumerator());
+        assertEquals(4, fractions.get(1).getDenominator());
     }
 
     @Test
@@ -59,7 +61,8 @@ public class UserTest {
 
         List<Fraction> fractions = user.getFractions();
         assertEquals(1, fractions.size());
-        assertEquals(new Fraction(2, 3), fractions.get(0));
+        assertEquals(2, fractions.get(0).getNumerator());
+        assertEquals(3, fractions.get(0).getDenominator());
     }
 
     @Test
@@ -67,7 +70,8 @@ public class UserTest {
         user.addFraction(new Fraction(2, 3));
         List<Fraction> fractions = user.getFractions();
         assertEquals(3, fractions.size());
-        assertEquals(new Fraction(2, 3), fractions.get(2));
+        assertEquals(2, fractions.get(2).getNumerator());
+        assertEquals(3, fractions.get(2).getDenominator());
     }
 
     @Test
