@@ -34,6 +34,12 @@ import java.util.Optional;
             });
             return result;
         }
+        public Stream<String> findUserFamilyNameByAllNegativeSignFractionDistinct() {
+            return new UsersDatabase().findAll()
+                    .filter(user -> user.getFractions().stream().anyMatch(fraction -> fraction.getNumerator() < 0))
+                    .map(User::getFamilyName)
+                    .distinct();
+        }
     }
 
 
