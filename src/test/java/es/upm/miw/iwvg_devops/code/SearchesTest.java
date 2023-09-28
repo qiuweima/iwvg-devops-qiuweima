@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class SearchesTest {
     private Searches searches;
@@ -31,6 +32,12 @@ class SearchesTest {
         Fraction actual = new Searches().findFractionSubtractionByUserName("Paula");
         assertEquals(0,actual.getNumerator());
         assertEquals(0,actual.getDenominator());
+    }
+    @Test
+    void testFindUserFamilyNameByAllNegativeSignFractionDistinct() {
+        Stream<String> expected = Stream.of("Blanco");
+        Stream<String> actual = new Searches().findUserFamilyNameByAllNegativeSignFractionDistinct();
+        assertEquals(expected.collect(Collectors.toList()), actual.collect(Collectors.toList()));
     }
 
 }
