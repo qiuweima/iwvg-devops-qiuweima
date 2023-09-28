@@ -33,9 +33,6 @@ public class Fraction {
         this.denominator = denominator;
     }
 
-    public Fraction() {
-        this(1, 1);
-    }
 
     public int getNumerator() {
         return numerator;
@@ -62,8 +59,8 @@ public class Fraction {
     public boolean isImproper() {
         return (double) Math. abs(numerator) >= Math.abs(denominator);
     }
-    public boolean isEquivalent() {
-        return (double) numerator * denominator == numerator * denominator;
+    public boolean isEquivalent(Fraction fraction2) {
+        return (double) numerator * fraction2.denominator == denominator * fraction2.numerator;
     }
     public Fraction add(Fraction other) {
         int new_numerator = numerator * other.denominator + other.numerator * denominator;
@@ -74,7 +71,6 @@ public class Fraction {
         int new_numerator = numerator * other.numerator;
         int new_denominator = denominator * other.denominator;
         return new Fraction(new_numerator, new_denominator);
-
     }
     public Fraction divide(Fraction other){
         if (other.numerator == 0) {
