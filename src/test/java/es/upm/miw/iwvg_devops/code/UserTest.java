@@ -56,7 +56,6 @@ public class UserTest {
         List<Fraction> newFractions = new ArrayList<>();
         newFractions.add(new Fraction(2, 3));
         user.setFractions(newFractions);
-
         List<Fraction> fractions = user.getFractions();
         assertEquals(1, fractions.size());
         assertEquals(new Fraction(2, 3), fractions.get(0));

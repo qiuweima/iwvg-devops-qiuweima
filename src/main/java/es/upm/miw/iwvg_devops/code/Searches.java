@@ -20,6 +20,20 @@ import java.util.Optional;
                     .findFirst();
             return result.orElse(null);
         }
+        public Fraction findFractionSubtractionByUserName(String name) {
+            Stream<Fraction> fractions = new UsersDatabase().findAll()
+                    .filter(user -> name.equals(user.getName()))
+                    .flatMap(user -> user.getFractions().stream());
+            Fraction result = new Fraction(0, 1);
+            result = fractions.reduce(result, (fraction1, fraction2) -> {
+                int commonDenominator = fraction1.getDenominator() * fraction2.getDenominator();
+                int numerator1 = fraction1.getNumerator() * fraction2.getDenominator();
+                int numerator2 = fraction2.getNumerator() * fraction1.getDenominator();
+                int newNumerator = numerator1 - numerator2;
+                return new Fraction(newNumerator, commonDenominator);
+            });
+            return result;
+        }
     }
 
 

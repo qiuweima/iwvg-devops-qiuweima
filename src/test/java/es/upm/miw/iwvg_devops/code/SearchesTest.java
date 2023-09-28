@@ -2,8 +2,9 @@ package es.upm.miw.iwvg_devops.code;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import java.util.stream.Collectors;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 class SearchesTest {
@@ -24,5 +25,13 @@ class SearchesTest {
     void testFindFirstDecimalFractionByUserName() {
         assertEquals(0.0, searches.findFirstDecimalFractionByUserName("Oscar"));
     }
+    @Test
+    void testFindFractionSubtractionByUserName() {
+        Fraction expected = new Fraction(0, 0);
+        Fraction actual = new Searches().findFractionSubtractionByUserName("Paula");
+        assertEquals(0,actual.getNumerator());
+        assertEquals(0,actual.getDenominator());
+    }
+
 }
 
