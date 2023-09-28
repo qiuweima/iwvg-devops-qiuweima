@@ -56,7 +56,34 @@ public class Fraction {
     public double decimal() {
         return (double) numerator / denominator;
     }
+    public boolean isProper() {
+        return (double) Math.abs(numerator) < Math.abs(denominator);
+    }
+    public boolean isImproper() {
+        return (double) Math. abs(numerator) >= Math.abs(denominator);
+    }
+    public boolean isEquivalent() {
+        return (double) numerator * denominator == numerator * denominator;
+    }
+    public Fraction add(Fraction other) {
+        int new_numerator = numerator * other.denominator + other.numerator * denominator;
+        int new_denominator = denominator * other.denominator;
+        return new Fraction( new_numerator, new_denominator);
+    }
+    public Fraction multiply(Fraction other) {
+        int new_numerator = numerator * other.numerator;
+        int new_denominator = denominator * other.denominator;
+        return new Fraction(new_numerator, new_denominator);
 
+    }
+    public Fraction divide(Fraction other){
+        if (other.numerator == 0) {
+            throw new IllegalArgumentException("No se puede dividir por cero.");
+        }
+        int newNumerator = numerator * other.denominator;
+        int newDenominator = denominator * other.numerator;
+        return new Fraction(newNumerator, newDenominator);
+    }
     @Override
     public String toString() {
         return "Fraction{" +
@@ -64,4 +91,5 @@ public class Fraction {
                 ", denominator=" + denominator +
                 '}';
     }
+
 }
